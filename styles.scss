@@ -1,0 +1,145 @@
+$light-color: #f1f1f1;
+$border-color: #a1a1a1;
+$trans: all 1s ease-in;
+$colors: #2EB0DB,
+#52D108,
+#D64040,
+#2EB0DB;
+$div-width: 200px;
+$div-height: 550px;
+.container {
+  margin-top: 15vh;
+}
+
+.info {
+  width: $div-width +40px;
+  height: $div-width +40px;
+  background-image: radial-gradient(circle, #fff, $light-color, $border-color 80%);
+  border: .5px solid $border-color;
+  margin: auto;
+  transform: skew(-45deg, 45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: $trans;
+  font: {
+    family: 'Amatica SC', cursive;
+    weight: bold;
+    size: 24px;
+  }
+  .text {
+    transform: rotate(-45deg);
+    transition: $trans;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ul {
+      list-style: none;
+      li {
+        cursor: context-menu;
+        a {
+          cursor: pointer;
+          display: inline-block;
+          &:hover {
+            opacity: .75;
+          }
+          &:active {
+            opacity: .25;
+          }
+        }
+        &::before {
+          font-family: FontAwesome, serif;
+          content: "\f1e8";
+          position: relative;
+          top: -3px;
+          left: -8px;
+        }
+        @for $i from 1 through 3 {
+          &:nth-of-type(#{$i})::before {
+            color: nth($colors, ($i));
+          }
+        }
+      }
+    }
+  }
+}
+
+.cols {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  .offline,
+  .online {
+    width: $div-width;
+    height: $div-height;
+    background-image: linear-gradient(-90deg, $border-color, $light-color 15%, #fff, $light-color 85%, $border-color);
+    border: .5px solid $border-color;
+    padding: 20px;
+    transition: $trans;
+    h3 {
+      font-family: "Amatica SC", cursive;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      li {
+        border-bottom: .5px solid $border-color;
+        p {
+          font-family: 'Amatica SC', cursive;
+          cursor: context-menu;
+        }
+        a {
+          font-family: 'Poiret One', cursive;
+          text-decoration: none;
+          color: inherit;
+          &:hover,
+          &:active {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+  .offline {
+    transform: skewY(45deg);
+    & li {
+      padding: 5px 0;
+    }
+  }
+  .online {
+    transform: skewY(-45deg);
+  }
+}
+
+.to-offline {
+  #info {
+    transform: skew(0deg, 0deg);
+    .text {
+      transform: rotate(0deg);
+    }
+  }
+  .offline {
+    transform: skew(0deg, 0deg) translateX(50%);
+    z-index: 3;
+  }
+  .online {
+    transform: rotateY(90deg);
+    opacity: 0;
+  }
+}
+
+.to-online {
+  .info {
+    transform: rotate(90deg);
+    .text {
+      transform: rotate(-90deg);
+    }
+  }
+  .offline {
+    transform: rotateY(90deg);
+    opacity: 0;
+  }
+  .online {
+    transform: skewY(0deg) translateX(-50%);
+  }
+}

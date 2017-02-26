@@ -1,0 +1,111 @@
+.container {
+  margin-top: 15vh; }
+
+.info {
+  width: 240px;
+  height: 240px;
+  background-image: radial-gradient(circle, #fff, #f1f1f1, #a1a1a1 80%);
+  border: 0.5px solid #a1a1a1;
+  margin: auto;
+  transform: skew(-45deg, 45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 1s ease-in;
+  font-family: 'Amatica SC', cursive;
+  font-weight: bold;
+  font-size: 24px; }
+  .info .text {
+    transform: rotate(-45deg);
+    transition: all 1s ease-in;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .info .text ul {
+      list-style: none; }
+      .info .text ul li {
+        cursor: context-menu; }
+        .info .text ul li a {
+          cursor: pointer;
+          display: inline-block; }
+          .info .text ul li a:hover {
+            opacity: .75; }
+          .info .text ul li a:active {
+            opacity: .25; }
+        .info .text ul li::before {
+          font-family: FontAwesome, serif;
+          content: "\f1e8";
+          position: relative;
+          top: -3px;
+          left: -8px; }
+        .info .text ul li:nth-of-type(1)::before {
+          color: #2EB0DB; }
+        .info .text ul li:nth-of-type(2)::before {
+          color: #52D108; }
+        .info .text ul li:nth-of-type(3)::before {
+          color: #D64040; }
+
+.cols {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; }
+  .cols .offline,
+  .cols .online {
+    width: 200px;
+    height: 550px;
+    background-image: linear-gradient(-90deg, #a1a1a1, #f1f1f1 15%, #fff, #f1f1f1 85%, #a1a1a1);
+    border: 0.5px solid #a1a1a1;
+    padding: 20px;
+    transition: all 1s ease-in; }
+    .cols .offline h3,
+    .cols .online h3 {
+      font-family: "Amatica SC", cursive; }
+    .cols .offline ul,
+    .cols .online ul {
+      list-style: none;
+      padding: 0; }
+      .cols .offline ul li,
+      .cols .online ul li {
+        border-bottom: 0.5px solid #a1a1a1; }
+        .cols .offline ul li p,
+        .cols .online ul li p {
+          font-family: 'Amatica SC', cursive;
+          cursor: context-menu; }
+        .cols .offline ul li a,
+        .cols .online ul li a {
+          font-family: 'Poiret One', cursive;
+          text-decoration: none;
+          color: inherit; }
+          .cols .offline ul li a:hover, .cols .offline ul li a:active,
+          .cols .online ul li a:hover,
+          .cols .online ul li a:active {
+            font-weight: bold; }
+  .cols .offline {
+    transform: skewY(45deg); }
+    .cols .offline li {
+      padding: 5px 0; }
+  .cols .online {
+    transform: skewY(-45deg); }
+
+.to-offline #info {
+  transform: skew(0deg, 0deg); }
+  .to-offline #info .text {
+    transform: rotate(0deg); }
+.to-offline .offline {
+  transform: skew(0deg, 0deg) translateX(50%);
+  z-index: 3; }
+.to-offline .online {
+  transform: rotateY(90deg);
+  opacity: 0; }
+
+.to-online .info {
+  transform: rotate(90deg); }
+  .to-online .info .text {
+    transform: rotate(-90deg); }
+.to-online .offline {
+  transform: rotateY(90deg);
+  opacity: 0; }
+.to-online .online {
+  transform: skewY(0deg) translateX(-50%); }
+
+/*# sourceMappingURL=styles.css.map */
